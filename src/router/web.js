@@ -18,6 +18,9 @@ let initWebRouters = (app) => {
     router.post('/api/login', UserController.handleLogin)
     //api get all user
     router.get('/api/get-all-users', UserController.handleGetAllUsers)
+
+    router.post('/api/create-new-user', UserController.handleCreateNewUser);
+
     // api get all Book
     router.get('/api/get-all-books', BookController.handleGetAllBooks)
     //api get all Loai
