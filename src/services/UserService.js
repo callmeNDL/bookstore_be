@@ -118,11 +118,39 @@ let createNewUser = (data) => {
         }
     })
 }
+let deleteUser = (userId) => {
+    //console.log('check userID',userId);
+    return new Promise(async (resolve, reject) => {
+        //check id
+        try {
+            let user = await db.User.findOne({
+                where: { id: userId },
+                raw: false
+            })
+            if (!user) {
+                resolve({
+                    errCode: 2,
+                    errMessage: "the user is not exist"
+                })
+            } else {
+                await user.destroy();
+            }
+            resolve({
+                errCode: 0,
+                errMessage: "The User is delete"
+            })
+
+        } catch (e) {
+            reject(e)
+        }
+        re
+    })
+}
 module.exports = {
     handleUserLogin: handleUserLogin,
     getAllUsers: getAllUsers,
     getAllLoais: getAllLoais,
     createNewUser: createNewUser,
-
+    deleteUser: deleteUser,
 
 }

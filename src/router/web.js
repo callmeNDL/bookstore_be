@@ -20,6 +20,7 @@ let initWebRouters = (app) => {
     router.get('/api/get-all-users', UserController.handleGetAllUsers)
 
     router.post('/api/create-new-user', UserController.handleCreateNewUser);
+    router.delete('/api/delete-user', UserController.handleDeleteUser);
 
     // api get all Book
     router.get('/api/get-all-books', BookController.handleGetAllBooks)
