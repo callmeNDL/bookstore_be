@@ -21,6 +21,7 @@ let initWebRouters = (app) => {
 
     router.post('/api/create-new-user', UserController.handleCreateNewUser);
     router.delete('/api/delete-user', UserController.handleDeleteUser);
+    router.put('/api/edit-user', UserController.handleEditUser);
 
     // api get all Book
     router.get('/api/get-all-books', BookController.handleGetAllBooks)

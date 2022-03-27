@@ -6,7 +6,7 @@ let handleUserLogin = (email, password) => {
             let userData = {};
             let userIsExist = await checkUserEmail(email);
             if (userIsExist) {
-                //user already exist ( da ton tai email nay)
+                //user already exist ( da ton tai email nay)x
                 //compare password
                 let user = await db.User.findOne({
                     where: { email: email },
@@ -143,7 +143,52 @@ let deleteUser = (userId) => {
         } catch (e) {
             reject(e)
         }
-        re
+    })
+}
+let updateUserData = (data) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+
+            if (!data.id) {
+                resolve({
+                    errCode: 2,
+                    errMessage: "Messing requited parameter"
+                });
+            }
+            let user = await db.User.findOne({
+                where: { id: data.id },
+                raw: false,
+            });
+            if (user) {
+                //             email: DataTypes.STRING,
+                // password: DataTypes.STRING,
+                // firstName: DataTypes.STRING,
+                // lastName: DataTypes.STRING,
+                // address: DataTypes.STRING,
+                // gender: DataTypes.BOOLEAN,
+                // roleId: DataTypes.STRING
+                user.firstName = data.firstName;
+                user.lastName = data.lastName;
+                user.address = data.address;
+                user.gender = data.gender;
+                user.roleId = data.roleId;
+
+
+                await user.save();
+                resolve({
+                    errCode: 0,
+                    errMessage: "update user success!"
+                })
+            } else {
+                resolve({
+                    errCode: 1,
+                    errMessage: "User not found!"
+                });
+            }
+
+        } catch (e) {
+            reject(e);
+        }
     })
 }
 module.exports = {
@@ -152,5 +197,6 @@ module.exports = {
     getAllLoais: getAllLoais,
     createNewUser: createNewUser,
     deleteUser: deleteUser,
+    updateUserData: updateUserData
 
 }
