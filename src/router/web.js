@@ -1,6 +1,7 @@
 import express from "express";
 import HomeController from "../controllers/homeController";
-import UserController from "../controllers/UserController"
+import UserController from "../controllers/UserController";
+import BookController from "../controllers/BookController"
 
 let router = express.Router();
 
@@ -17,15 +18,19 @@ let initWebRouters = (app) => {
     router.post('/api/login', UserController.handleLogin)
     //api get all user
     router.get('/api/get-all-users', UserController.handleGetAllUsers)
+
+    router.post('/api/create-new-user', UserController.handleCreateNewUser);
+    router.put('/api/edit-user', UserController.handleEditUser);
+    router.delete('/api/delete-user', UserController.handleDeleteUser);
     // api get all Book
-    router.get('/api/get-all-books', UserController.handleGetAllBooks)
+    router.get('/api/get-all-books', BookController.handleGetAllBooks)
     //api get all Loai
     router.get('/api/get-all-loais', UserController.handleGetAllLoais)
     //api crud book
-    router.get('/api/get-book', UserController.handleGetBook)
-    router.post('/api/create-book', UserController.handleCreateBook)
-    router.delete('/api/delete-book', UserController.handleDeleteBook)
-    router.put('/api/edit-book', UserController.handleEditBook);
+    router.get('/api/get-book', BookController.handleGetBook)
+    router.post('/api/create-book', BookController.handleCreateBook)
+    router.delete('/api/delete-book', BookController.handleDeleteBook)
+    router.put('/api/edit-book', BookController.handleEditBook);
 
     return app.use("/", router);
 }
