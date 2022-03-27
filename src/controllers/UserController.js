@@ -25,7 +25,15 @@ let handleGetAllUsers = async (req, res) => {
         users
     })
 }
-
+let handleAdminGetAllUsers = async (req, res) => {
+    //let id = req.body.id;// Truyền ALL để lấy tất cả || id để lấy cụ thể
+    let users = await UserService.adminGetAllUsers();
+    return res.status(200).json({
+        errCode: 0,
+        message: 'GET ALL USER SUCCESS',
+        users
+    })
+}
 let handleGetAllLoais = async (req, res) => {
     let loais = await UserService.getAllLoais();
     return res.status(200).json({
@@ -63,6 +71,7 @@ module.exports = {
     handleGetAllLoais: handleGetAllLoais,
     handleCreateNewUser: handleCreateNewUser,
     handleDeleteUser: handleDeleteUser,
-    handleEditUser: handleEditUser
+    handleEditUser: handleEditUser,
+    handleAdminGetAllUsers: handleAdminGetAllUsers
 
 }

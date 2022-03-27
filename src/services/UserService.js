@@ -71,7 +71,17 @@ let getAllUsers = () => {
         }
     })
 }
-
+let adminGetAllUsers = () => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let users = await db.User.findAll({
+            });
+            resolve(users);
+        } catch (error) {
+            reject(error);
+        }
+    })
+}
 let getAllLoais = () => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -197,6 +207,7 @@ module.exports = {
     getAllLoais: getAllLoais,
     createNewUser: createNewUser,
     deleteUser: deleteUser,
-    updateUserData: updateUserData
+    updateUserData: updateUserData,
+    adminGetAllUsers: adminGetAllUsers
 
 }
