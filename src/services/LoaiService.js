@@ -68,12 +68,12 @@ let editLoai = (data) => {
         await loai.save();
         resolve({
           errCode: 0,
-          errMessage: "update Book success!"
+          errMessage: "update Loai success!"
         })
       } else {
         resolve({
           errCode: 1,
-          errMessage: "Book not found!"
+          errMessage: "Loai not found!"
         });
       }
 
