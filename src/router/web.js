@@ -1,7 +1,9 @@
 import express from "express";
 import HomeController from "../controllers/homeController";
 import UserController from "../controllers/UserController";
-import BookController from "../controllers/BookController"
+import BookController from "../controllers/BookController";
+import LoaiController from "../controllers/LoaiController";
+
 
 let router = express.Router();
 
@@ -26,6 +28,9 @@ let initWebRouters = (app) => {
     router.get('/api/get-all-books', BookController.handleGetAllBooks);
     //api get all Loai;;
     router.get('/api/get-all-loais', UserController.handleGetAllLoais);
+    router.post('/api/create-new-loai', LoaiController.handleCreateNewLoai);
+    router.delete('/api/delete-loai', LoaiController.handleDeleteLoai);
+    router.put('/api/edit-loai', LoaiController.handleEditLoai);
     //api crud book
     router.get('/api/get-book', BookController.handleGetBook);
     router.post('/api/create-book', BookController.handleCreateBook);
