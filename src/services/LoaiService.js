@@ -3,9 +3,8 @@ import db from '../models/index';
 let createLoai = (data) => {
   return new Promise(async (resolve, reject) => {
     try {
+      console.log(data);
       await db.Loai.create({
-        // maloai: DataTypes.STRING,
-        // tenloai: DataTypes.STRING,
         maloai: data.maloai,
         tenloai: data.tenloai,
       })
@@ -61,8 +60,6 @@ let editLoai = (data) => {
         raw: false,
       });
       if (loai) {
-        // maloai: DataTypes.STRING,
-        // tenloai: DataTypes.STRING,
         loai.maloai = data.maloai;
         loai.tenloai = data.tenloai;
         await loai.save();

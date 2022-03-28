@@ -1,5 +1,7 @@
 import LoaiService from '../services/LoaiService'
-
+// router.post('/api/create-new-loai', LoaiController.handleCreateNewLoai);
+//     router.delete('/api/delete-loai', LoaiController.handleDeleteLoai);
+//     router.put('/api/edit-loai', LoaiController.handleEditLoai);
 let handleCreateNewLoai = async (req, res) => {
   let message = await LoaiService.createLoai(req.body);
   return res.status(200).json(message);
