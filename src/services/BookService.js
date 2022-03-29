@@ -1,4 +1,5 @@
 import db from '../models/index';
+const { Op } = require('sequelize')
 
 let getAllBooks = () => {
   return new Promise(async (resolve, reject) => {
@@ -24,6 +25,29 @@ let getBook = (id) => {
         });
 
       }
+      resolve(book);
+    } catch (e) {
+      reject(e);
+    }
+  })
+}
+let BookTheoGia = (min, max) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let book = '';
+      console.log("min", min);
+      book = await db.Book.findAll({
+        where: {
+          gia: {
+            [Op.gte]: min,
+            [Op.lte]: max,
+          }
+
+          // },
+        },
+        raw: false
+      })
+
       resolve(book);
     } catch (e) {
       reject(e);
@@ -122,6 +146,7 @@ module.exports = {
   getBook: getBook,
   createBook: createBook,
   deleteBook: deleteBook,
-  editBook: editBook
+  editBook: editBook,
+  BookTheoGia: BookTheoGia
 
 }

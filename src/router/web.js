@@ -26,6 +26,7 @@ let initWebRouters = (app) => {
 
     // api get all Book
     router.get('/api/get-all-books', BookController.handleGetAllBooks);
+    router.get('/api/handle-get-book', BookController.getBook);
     //api get all Loai;;
     router.get('/api/get-all-loais', UserController.handleGetAllLoais);
     router.post('/api/create-new-loai', LoaiController.handleCreateNewLoai);

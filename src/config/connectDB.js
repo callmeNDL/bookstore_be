@@ -3,18 +3,12 @@ require('dotenv').config();
 
 // Option 3: Passing parameters separately (other dialects)
 const sequelize = new Sequelize(
-    'dnk76uvkpsrp0',
-    'pgbcxytrmokvtb',
-    '1db9bfebb9450ef08ec554a0b634aa30f9a1985ff9df068f6e0032fa6df1180c', {
-    host: 'ec2-3-231-254-204.compute-1.amazonaws.com',
-    dialect: 'postgres',
-    logging: false,
-    dialectOptions: {
-        ssl: {
-            require: true,
-            rejectUnauthorized: false
-        }
-    }
+    'backendtest',
+    'root',
+    null, {
+    host: 'localhost',
+    dialect: 'mysql',
+    logging: false
 });
 
 let connectDB = async () => {

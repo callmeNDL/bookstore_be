@@ -50,10 +50,30 @@ let handleEditBook = async (req, res) => {
   let message = await BookService.editBook(data);
   return res.status(200).json(message)
 }
+let getBook = async (req, res) => {
+  let min = req.query.min;
+  let max = req.query.max;
+
+  if (!min || !max) {
+    return res.status(500).json({
+      errCode: 1,
+      message: 'Missing inputs parameter gia!'
+    })
+  }
+
+  let bookData = await BookService.BookTheoGia(min, max);
+
+  return res.status(200).json({
+    errCode: 0,
+    message: 'GET sach theo min max',
+    bookData
+  })
+}
 module.exports = {
   handleGetAllBooks: handleGetAllBooks,
   handleGetBook: handleGetBook,
   handleCreateBook: handleCreateBook,
   handleDeleteBook: handleDeleteBook,
-  handleEditBook: handleEditBook
+  handleEditBook: handleEditBook,
+  getBook: getBook
 }
